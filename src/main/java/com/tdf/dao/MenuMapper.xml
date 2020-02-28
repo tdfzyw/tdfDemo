@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdf.dao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.tdf.entity.Menu">
+    <id column="MENUID" jdbcType="VARCHAR" property="menuid" />
+    <result column="MENUNAME" jdbcType="VARCHAR" property="menuname" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="ICON" jdbcType="VARCHAR" property="icon" />
+    <result column="PID" jdbcType="VARCHAR" property="pid" />
+    <result column="IS_PARENT" jdbcType="INTEGER" property="isParent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MENUID, MENUNAME, URL, ICON, PID, IS_PARENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SSMTEST.MENU
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SSMTEST.MENU
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdf.entity.Menu">
+    insert into SSMTEST.MENU (MENUID, MENUNAME, URL, 
+      ICON, PID, IS_PARENT
+      )
+    values (#{menuid,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{isParent,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdf.entity.Menu">
+    insert into SSMTEST.MENU
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuid != null">
+        MENUID,
+      </if>
+      <if test="menuname != null">
+        MENUNAME,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+      <if test="icon != null">
+        ICON,
+      </if>
+      <if test="pid != null">
+        PID,
+      </if>
+      <if test="isParent != null">
+        IS_PARENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuid != null">
+        #{menuid,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null">
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null">
+        #{isParent,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdf.entity.Menu">
+    update SSMTEST.MENU
+    <set>
+      <if test="menuname != null">
+        MENUNAME = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        PID = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null">
+        IS_PARENT = #{isParent,jdbcType=INTEGER},
+      </if>
+    </set>
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdf.entity.Menu">
+    update SSMTEST.MENU
+    set MENUNAME = #{menuname,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      ICON = #{icon,jdbcType=VARCHAR},
+      PID = #{pid,jdbcType=VARCHAR},
+      IS_PARENT = #{isParent,jdbcType=INTEGER}
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </update>
+  <!-- 查询所有菜单的所有属性 -->
+  <select id="selectMenu" resultType="menu">
+		SELECT menuid,menuname,url,icon,pid FROM menu where pid = #{pid}
+	</select>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ttdmdb@192.168.12.60">
+  <database-model serializer="dbm" dbms="DB2_LUW" family-id="DB2_LUW" format-version="4.17">
+    <root id="1">
+      <ServerVersion>9.7.4</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="CARDMIS"/>
+    <schema id="3" parent="1" name="DB2INST1"/>
+    <schema id="4" parent="1" name="IMF"/>
+    <schema id="5" parent="1" name="NULLID"/>
+    <schema id="6" parent="1" name="SQLJ"/>
+    <schema id="7" parent="1" name="SSMTEST">
+      <Current>1</Current>
+    </schema>
+    <schema id="8" parent="1" name="SYSCAT"/>
+    <schema id="9" parent="1" name="SYSFUN"/>
+    <schema id="10" parent="1" name="SYSIBM"/>
+    <schema id="11" parent="1" name="SYSIBMADM"/>
+    <schema id="12" parent="1" name="SYSIBMINTERNAL"/>
+    <schema id="13" parent="1" name="SYSIBMTS"/>
+    <schema id="14" parent="1" name="SYSPROC"/>
+    <schema id="15" parent="1" name="SYSPUBLIC"/>
+    <schema id="16" parent="1" name="SYSSTAT"/>
+    <schema id="17" parent="1" name="SYSTOOLS"/>
+  </database-model>
+</dataSource>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdf.dao.UserDao">
+
+    <!-- 根据user_code和user_pwd查询user表 -->
+    <select id="selectUserByUname"
+			parameterType="com.tdf.entity.User" resultType="com.tdf.entity.User">
+		select * from user
+	</select>
+
+</mapper>
